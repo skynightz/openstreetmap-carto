@@ -2,6 +2,7 @@
 layers/
 data/
 tmp/
+export/
 *.xml
 *.osm.pbf
 node_modules/

@@ -18,13 +18,15 @@ You need sufficient disk space of _several Gigabytes_. Docker creates a disk ima
 If you are eager to get started here is an overview over the necessary steps.
 Read on below to get the details.
 
-* `git clone https://github.com/gravitystorm/openstreetmap-carto.git` to clone openstreetmap-carto repository into a directory on your host system
-* download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the openstreetmap-carto directory (for example some small area from [Geofabrik](https://download.geofabrik.de/))
+* `git clone https://github.com/skynightz/openstreetmap-carto.git` to clone openstreetmap-carto repository into a directory on your host system
+* download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` [Geofabrik](https://download.geofabrik.de/)
 * `docker-compose up import` to import the data (only necessary the first time or when you change the data file)
 * `docker-compose up kosmtik` to run the style preview application
 * browse to [http://localhost:6789](http://localhost:6789) to view the output of Kosmtik
 * Ctrl+C to stop the style preview application
 * `docker-compose stop db` to stop the database container
+* You can start tile server and export tiles with "Run kosmtik server.bat" and "Run export tiles cmd.bat"
+* Edit "Run export tiles cmd.bat" if you want to change export settings
 
 ## Repositories
 
