@@ -3,18 +3,18 @@ metatile: 2
 name: OpenStreetMap Carto
 description: A general-purpose OpenStreetMap mapnik style, in CartoCSS
 bounds: &world
-  - 4.298400878906251
-  - 45.1433047394883
-  - 12.735900878906252
-  - 48.05972528178409
+  - -180
+  - -85.05112877980659
+  - 180
+  - 85.05112877980659
 center:
-  - 8.4941
-  - 46.6147
-  - 9
+  - 0
+  - 0
+  - 4
 format: png
 interactivity: false
-minzoom: 7
-maxzoom: 12
+minzoom: 0
+maxzoom: 22
 srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
 
 # Various parts to be included later on
@@ -555,8 +555,8 @@ Layer:
             military,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE landuse = 'military'
-            OR military = 'danger_area'
+          WHERE (landuse = 'military'
+            OR military = 'danger_area')
             AND building IS NULL
         ) AS landuse_overlay
     properties:
