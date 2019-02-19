@@ -4,16 +4,13 @@
 # You can read details about that in DOCKER.md
 
 # Testing if database is ready
-i=1
-MAXCOUNT=60
-echo "Waiting for PostgreSQL to be running"
-while [ $i -le $MAXCOUNT ]
-do
-  pg_isready -q && echo "PostgreSQL running" && break
-  sleep 2
-  i=$((i+1))
+
+until pg_isready > /dev/null 2>&1; do
+  echo "Waiting for postgres server..." 
+  sleep 1
 done
-test $i -gt $MAXCOUNT && echo "Timeout while waiting for PostgreSQL to be running"
+
+>&1 echo "Postgres server is up !"
 
 case "$1" in
 import)
@@ -26,15 +23,15 @@ import)
   if [ ! -e ".env" ]; then
     cat > .env <<EOF
 # Environment settings for importing to a Docker container database
-PG_WORK_MEM=${PG_WORK_MEM:-16MB}
-PG_MAINTENANCE_WORK_MEM=${PG_MAINTENANCE_WORK_MEM:-256MB}
-OSM2PGSQL_CACHE=${OSM2PGSQL_CACHE:-512}
-OSM2PGSQL_NUMPROC=${OSM2PGSQL_NUMPROC:-1}
+PG_WORK_MEM=${PG_WORK_MEM:-128MB}
+PG_MAINTENANCE_WORK_MEM=${PG_MAINTENANCE_WORK_MEM:-2GB}
+OSM2PGSQL_CACHE=${OSM2PGSQL_CACHE:-2048}
+OSM2PGSQL_NUMPROC=${OSM2PGSQL_NUMPROC:-4}
 OSM2PGSQL_DATAFILE=${OSM2PGSQL_DATAFILE:-data.osm.pbf}
 EOF
     chmod a+rw .env
-    export OSM2PGSQL_CACHE=${OSM2PGSQL_CACHE:-512}
-    export OSM2PGSQL_NUMPROC=${OSM2PGSQL_NUMPROC:-1}
+    export OSM2PGSQL_CACHE=${OSM2PGSQL_CACHE:-2048}
+    export OSM2PGSQL_NUMPROC=${OSM2PGSQL_NUMPROC:-4}
     export OSM2PGSQL_DATAFILE=${OSM2PGSQL_DATAFILE:-data.osm.pbf}
   fi
 
