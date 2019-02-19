@@ -4,7 +4,7 @@ services:
     image: kosmtik:v1
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.kosmtik
     volumes:
       - .:/openstreetmap-carto
     depends_on:
@@ -15,7 +15,7 @@ services:
       - PGHOST=db
       - PGUSER=postgres
   db:
-    image: mdillon/postgis:10
+    image: db:v1
     restart: always
     build:
       context: .

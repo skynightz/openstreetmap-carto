@@ -1,0 +1,10 @@
+plugins:
+  - kosmtik-overpass-layer
+  - kosmtik-fetch-remote
+  - kosmtik-overlay
+  - kosmtik-open-in-josm
+  - kosmtik-map-compare
+  - kosmtik-osm-data-overlay
+  - kosmtik-mapnik-reference
+  - kosmtik-geojson-overlay
+  - kosmtik-tiles-export
