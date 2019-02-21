@@ -3,7 +3,7 @@
 @country-labels: darken(@admin-boundaries, 15%);
 @state-labels: desaturate(darken(@admin-boundaries, 5%), 20%);
 
-.country {
+.country{
   [zoom >= 3][zoom < 5][way_pixels > 1000],
   [zoom >= 5][way_pixels < 360000] {
     text-name: "[name]";
@@ -41,7 +41,12 @@
     text-placement: interior;
     text-character-spacing: 0.5;
   }
+  [zoom >= 10]{
+	polygon-fill:@country-color;
+  }
 }
+
+
 
 .state {
   [zoom >= 5][zoom < 7][way_pixels > 3000],
@@ -296,7 +301,7 @@
 }
 
 #placenames-small::suburb {
-  [place = 'suburb'][zoom >= 12][zoom < 17] {
+  [place = 'suburb'][zoom >= 10][zoom < 17] {
     text-name: "[name]";
     text-size: 11;
     text-fill: @placenames;
@@ -331,7 +336,7 @@
 
 #placenames-small::village {
   [place = 'village'] {
-    [zoom >= 12][zoom < 17] {
+    [zoom >= 10][zoom < 17] {
       text-name: "[name]";
       text-size: 10;
       text-fill: @placenames;

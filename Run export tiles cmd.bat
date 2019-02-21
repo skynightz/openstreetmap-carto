@@ -1,2 +1,2 @@
-docker exec -u 0 -it openstreetmap-carto_kosmtik_1 kosmtik export /openstreetmap-carto/project.mml --format tiles --output /openstreetmap-carto/export/switzerland --minZoom 12 --maxZoom 12 --bounds 4.298400878906251,45.1433047394883,12.735900878906252,48.05972528178409
+docker exec -u 0 -it openstreetmap-carto_kosmtik_1 kosmtik export /openstreetmap-carto/project.mml --format tiles --output /openstreetmap-carto/export/switzerland --minZoom 7 --maxZoom 12 --bounds 4.298400878906251,45.1433047394883,12.735900878906252,48.05972528178409
 pause
